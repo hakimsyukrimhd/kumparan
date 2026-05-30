@@ -6,9 +6,20 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:title", (req, res) => {
-  const theNews = req.params.title;
-  console.log(theNews);
-  res.status(200).json(theNews);
+  const newsParams = req.params.title;
+  const newsQuery = req.query.title;
+
+  if (newsParams) {
+    let theNews = newsData.filter((news) => {
+      return news.title === newsParams;
+    });
+    if (theNews.length === 0) {
+      return res.status(404).json({
+        message: "Data does not found",
+      });
+    }
+    res.status(200).json(theNews);
+  }
 });
 
 module.exports = router;
