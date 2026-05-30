@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/news", news);
-router.use("/about", about);
+router.use("/about", about);78
 router.use("/contact", contact);
 router.use("/user", user);
 
